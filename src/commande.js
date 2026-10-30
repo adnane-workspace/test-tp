@@ -9,3 +9,4 @@ async function validerCommande(items, email) {
 }
 
 module.exports = { validerCommande };
+

@@ -19,3 +19,4 @@ test("refuse un panier vide et n'envoie aucun e-mail", async () => {
   await expect(validerCommande([], 'client@test.fr')).rejects.toThrow('Panier vide');
   expect(mailer.envoyer).not.toHaveBeenCalled();
 });
+
