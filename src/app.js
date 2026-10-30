@@ -5,6 +5,10 @@ const app = express();
 app.use(express.json());
 app.use(express.static('public'));
 
+app.get('/', (req, res) => {
+  res.redirect('/login.html');
+});
+
 app.get('/users/:id', async (req, res) => {
   const id = Number(req.params.id);
   if (!Number.isInteger(id)) {
@@ -19,5 +23,12 @@ app.get('/users/:id', async (req, res) => {
   res.json(rows[0]);
 });
 
-module.exports = app;
+app.post('/login', (req, res) => {
+  const { email, password } = req.body;
+  if (email === 'a@test.fr' && password === 'secret') {
+    return res.sendStatus(200);
+  }
+  res.sendStatus(401);
+});
 
+module.exports = app;
